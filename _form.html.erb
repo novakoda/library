@@ -1,0 +1,27 @@
+<%= simple_form_for(@post) do |f| %>
+  <article class="media post-form feed-item">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <%= image_tag current_user.avatar.url(:thumb), class: "image is-64x64" %>
+      </p>
+      <p><%= current_user.full_name %></p>
+    </figure>
+    <div class="media-content">
+      <div class="field">
+        <p class="control">
+          <%= f.input_field :title, placeholder: "Create a title",
+          class: "input is-info is-rounded is-medium is-focused" %>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <%= f.input_field :body, placeholder: "What's on your mind?",
+          class: "textarea is-info is-rounded is-medium" %>
+        </p>
+      </div>
+      <%= f.button :submit, class: "button is-info" %>
+    </div>
+  </article>
+  <%= f.hidden_field :user_id, value: current_user.id  %>
+
+<% end %>

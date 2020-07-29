@@ -1,0 +1,36 @@
+<% @posts.each do |post| %>
+  <article class="media feed-post-container feed-item">
+    <figure class="media-left feed-post-user">
+      <h6><%= link_to post.user.full_name, post.user %></h6>
+      <%= image_tag post.user.avatar.url(:thumb), class: "image is-64x64" %>
+    </figure>
+
+    <div class="feed-post-content">
+      <h3><%= link_to post.title, post %></h3>
+      <p><%= post.body %></p>
+      <footer>
+        <div class="edit">
+          <% if post.user == current_user %>
+            <%= link_to 'Edit', edit_post_path(post) %> | 
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+        <div class="likes">
+          <p>
+            <% if post.likes.count.to_i == 1 %>
+              <%= post.likes.count %> like
+            <% else %>
+              <%= post.likes.count %> likes
+            <% end %>
+
+          </p>
+          <% unless current_user.liked_posts.include? post %>
+            <%= button_to 'Like', like_path(post), class: "button is-info" %>
+          <% else %>
+            <%= button_to 'Unlike', unlike_path(post), method: :delete, class: "button is-info" %>
+          <% end %>
+        </div>
+      </footer>
+    </div>
+  </article>
+<% end %>

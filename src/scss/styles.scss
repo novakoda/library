@@ -1,0 +1,11 @@
+$bg-color: #eee;
+
+body {
+  background-color: $bg-color !important;
+}
+
+main {
+  max-width: 1000px;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
