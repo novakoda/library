@@ -4,6 +4,11 @@ body {
 main {
   max-width: 1000px; }
 
+#book-form {
+  position: static;
+  max-width: 500px;
+  background-color: #fff; }
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

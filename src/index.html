@@ -12,6 +12,38 @@
     </head>
 
     <body class="p-2">
+      <div id="book-form" class="mx-auto p-3">
+        <form class="" action="index.html" method="post">
+          <h1>Add Book to Library</h1>
+          <div class="form-group">
+            <label for="formTitle">Title</label>
+            <input type="text" class="form-control" id="formTitle" placeholder="Think and Grow Rich">
+          </div>
+          <div class="form-group">
+            <label for="formAuthor">Author</label>
+            <input type="text" class="form-control" id="formAuthor" placeholder="Napoleon Hill">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="formPages">Pages</label>
+              <input type="text" class="form-control" id="formTitle" placeholder="238">
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" id="formRead" value="true">
+              <label class="form-check-label" for="formRead">read</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-input" id="formNotRead" value="false">
+              <label class="form-check-label" for="formNotRead">not read</label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit" name="button">Add Book</button>
+        </form>
+      </div>
+
       <main class="mx-auto mt-1">
         <h1 class="text-center">My Library</h1>
         <table class="table table-dark">

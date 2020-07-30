@@ -8,4 +8,10 @@ main {
   max-width: 1000px;
 }
 
+#book-form {
+  position: static;
+  max-width: 500px;
+  background-color: #fff;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
