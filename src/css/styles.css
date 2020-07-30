@@ -4,10 +4,28 @@ body {
 main {
   max-width: 1000px; }
 
+#book-form-container {
+  display: none;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 100%; }
+
 #book-form {
-  position: static;
+  position: relative;
+  width: 400px;
+  height: 400px;
   max-width: 500px;
   background-color: #fff; }
+
+#closeBtn {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  font-size: 13px;
+  padding: 0 5px;
+  text-decoration: none;
+  color: #fff; }
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)

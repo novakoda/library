@@ -38,3 +38,11 @@ addBookToLibrary("Think and Grow Rich", "Napoleon Hill", 238, false);
 addBookToLibrary("Outwitting the Devil", "Napoleon Hill", 288, true);
 console.log(myLibrary);
 listBooks();
+
+document.getElementById("newBook").addEventListener("click",  function() {
+  document.querySelector("#book-form-container").style.display = "block";
+});
+
+document.getElementById("closeBtn").addEventListener("click",  function() {
+  document.querySelector("#book-form-container").style.display = "none";
+});
