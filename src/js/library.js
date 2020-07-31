@@ -1,4 +1,9 @@
-var myLibrary = [];
+if (localStorage.getItem("myLibrary") != null) {
+  var myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+} else {
+  var myLibrary = [];
+}
+
 var libCont = document.getElementById('myLibrary');
 
 function Book(title, author, pages, read) {
@@ -20,12 +25,18 @@ function addBookToLibrary(title, author, pages, read) {
   book = new Book(title, author, pages, read);
   myLibrary.push(book);
   console.log(book.info);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   listBooks();
 }
 
 
 function listBooks() {
   var html = ""
+  console.log(JSON.parse(localStorage.getItem("myLibrary")));
+  if (localStorage.getItem("myLibrary") != null) {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  }
+
   myLibrary.forEach((book, i) => {
     html += `
     <tr id="book${i}">
@@ -57,11 +68,13 @@ function listBooks() {
         myLibrary[i].readStatus = "read";
       }
       readBtnColors(i);
+      localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     });
 
     document.getElementById(`delete${i}`).addEventListener("click",  function() {
       myLibrary.splice(i, 1);
       libCont.removeChild(window["book"+i]);
+      localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
       listBooks();
     });
   }
@@ -110,9 +123,11 @@ function formData(form) {
 }
 
 
+if (myLibrary.length < 1) {
+  addBookToLibrary("Think and Grow Rich", "Napoleon Hill", 238, false);
+  addBookToLibrary("Outwitting the Devil", "Napoleon Hill", 288, true);
+}
 
-addBookToLibrary("Think and Grow Rich", "Napoleon Hill", 238, false);
-addBookToLibrary("Outwitting the Devil", "Napoleon Hill", 288, true);
 console.log(myLibrary);
 listBooks();
 
