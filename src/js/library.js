@@ -7,10 +7,10 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
-  this.readStatus = "not read";
-
   if (this.read == true) {
     this.readStatus = "read";
+  } else {
+    this.readStatus = "not read";
   }
   this.info = `${title} by ${author}, ${pages} pages - ${this.readStatus}`;
 }
@@ -27,12 +27,37 @@ function addBookToLibrary(title, author, pages, read) {
 function listBooks() {
   var html = ""
   myLibrary.forEach((book, i) => {
-    html += `<tr id="book${i}"><th scope="row">${book.title}</th><td>${book.author}</td><td>${book.pages}</td><td>${book.readStatus}</td><td><button id="delete${i}" class="btn btn-danger px-1 py-0">X</button></td></tr>`
+    html += `
+    <tr id="book${i}">
+      <th scope="row">${book.title}</th>
+      <td>${book.author}</td>
+      <td>${book.pages}</td>
+      <td>
+        <button id="readBtn${i}" type="button" class="btn">${book.readStatus}</button>
+      </td>
+      <td>
+        <button id="delete${i}" class="btn btn-danger px-1 py-0">X</button>
+      </td>
+    </tr>`
   });
   libCont.innerHTML = html;
 
   for (let i = 0; i < myLibrary.length; i++) {
     window["book"+i] = document.getElementById(`book${i}`);
+    window["readBtn"+i] = document.getElementById(`readBtn${i}`);
+
+    readBtnColors(i);
+
+    window["readBtn"+i].addEventListener("click",  function() {
+      if (myLibrary[i].read) {
+        myLibrary[i].read = false;
+        myLibrary[i].readStatus = "not read";
+      } else {
+        myLibrary[i].read = true;
+        myLibrary[i].readStatus = "read";
+      }
+      readBtnColors(i);
+    });
 
     document.getElementById(`delete${i}`).addEventListener("click",  function() {
       myLibrary.splice(i, 1);
@@ -42,6 +67,14 @@ function listBooks() {
   }
 }
 
+function readBtnColors(i) {
+  if (myLibrary[i].read) {
+    window["readBtn"+i].className = "btn btn-success";
+  } else {
+    window["readBtn"+i].className = "btn btn-danger";
+  }
+  window["readBtn"+i].innerHTML = myLibrary[i].readStatus;
+}
 
 function formData(form) {
   var messages = [];

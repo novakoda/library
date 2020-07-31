@@ -36,4 +36,39 @@ main {
 #error {
   display: none;
 }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 35px;
+}
+
+.switch input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  height: 26px;
+  width:
+  background-color: white;
+  border-radius: 50%;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
