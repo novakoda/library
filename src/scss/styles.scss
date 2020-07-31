@@ -19,7 +19,6 @@ main {
 #book-form {
   position: relative;
   width: 400px;
-  height: 400px;
   max-width: 500px;
   background-color: #fff;
 }
@@ -34,4 +33,7 @@ main {
   color: #fff;
 }
 
+#error {
+  display: none;
+}
 @import "node_modules/bootstrap/scss/bootstrap";

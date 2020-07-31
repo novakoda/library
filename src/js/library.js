@@ -36,11 +36,32 @@ function listBooks() {
 }
 
 function formData(form) {
+  var messages = [];
 
   title = document.getElementById("formTitle").value;
   author = document.getElementById("formAuthor").value;
   pages = document.getElementById("formPages").value;
 
+  if (title === "" || title == null) {
+    messages.push("Title cannot be empty");
+  }
+
+  if (author === "" || author == null) {
+    messages.push("Author cannot be empty");
+  }
+
+  if (pages === "" || pages == null) {
+    messages.push("Pages cannot be empty");
+  }
+
+  error = document.querySelector("#error");
+  if (messages.length > 0) {
+    error.style.display = "block";
+    error.innerHTML = messages.join(", ");
+    return;
+  }
+  error.style.display = "none";
+  
   if (document.getElementById("formRead").checked) {
     read = true;
   } else {
@@ -48,6 +69,7 @@ function formData(form) {
   };
 
   addBookToLibrary(title, author, pages, read);
+  document.querySelector("#book-form-container").style.display = "none";
 }
 
 addBookToLibrary("Think and Grow Rich", "Napoleon Hill", 238, false);
@@ -61,7 +83,6 @@ document.getElementById("newBook").addEventListener("click",  function() {
 
 document.getElementById("addBook").addEventListener("click",  function() {
   formData(this);
-  document.querySelector("#book-form-container").style.display = "none";
 });
 
 document.getElementById("closeBtn").addEventListener("click",  function() {

@@ -36,6 +36,9 @@
 
       <div id="book-form-container">
         <form id="book-form" class="mx-auto p-3 border" action="/" method="get">
+          <div id="error" class="alert alert-danger">
+
+          </div>
           <h1>Add Book to Library</h1>
 
           <div class="form-group">
@@ -54,12 +57,8 @@
             </div>
 
             <div class="form-check form-check-inline mt-3 ml-5">
-              <input name="read" type="radio" class="form-check-input" id="formRead" value="true">
-              <label class="form-check-label" for="formRead">read</label>
-            </div>
-            <div class="form-check form-check-inline mt-3">
-              <input name="read" type="radio" class="form-check-input" id="formNotRead" value="false">
-              <label class="form-check-label" for="formNotRead">not read</label>
+              <input name="read" type="checkbox" class="form-check-input" id="formRead" value="true">
+              <label class="form-check-label" for="formRead">Have you read?</label>
             </div>
           </div>
 

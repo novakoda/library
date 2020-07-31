@@ -14,7 +14,6 @@ main {
 #book-form {
   position: relative;
   width: 400px;
-  height: 400px;
   max-width: 500px;
   background-color: #fff; }
 
@@ -26,6 +25,9 @@ main {
   padding: 0 5px;
   text-decoration: none;
   color: #fff; }
+
+#error {
+  display: none; }
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
